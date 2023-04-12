@@ -1,11 +1,11 @@
-About dataprofiler
-==================
+About dataprofiler-feedstock
+============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/dataprofiler-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/capitalone/data-profiler
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/dataprofiler-feedstock/blob/main/LICENSE.txt)
 
 Summary: What is in your data? Detect schema, statistics and entities in almost any file.
 
