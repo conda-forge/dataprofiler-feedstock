@@ -6,20 +6,20 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/DataProfiler-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/DataProfiler-{{ version }}.tar.gz
   sha256: 5c40d345b491a8b8ed0a9970ab4f460c9e807d647187f344556c4416a030ca85
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - setuptools
     - pip
-# This package imports itself at build time these are not needed. Open an issue upstream to avoid this.
+    # This package imports itself at build time these are not needed. Open an issue upstream to avoid this.
     - h5py >=2.10.0
     - wheel >=0.33.1
     - numpy >=1.22.0
@@ -42,8 +42,8 @@ requirements:
     - boto3 >=1.28.61
 
   run:
-#### requirements.txt
-    - python >=3.8
+    #### requirements.txt
+    - python >={{ python_min }}
     - h5py >=2.10.0
     - wheel >=0.33.1
     - numpy >=1.22.0
@@ -73,6 +73,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/capitalone/data-profiler
