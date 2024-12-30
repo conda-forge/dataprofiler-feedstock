@@ -19,7 +19,7 @@ requirements:
     - python {{ python_min }}
     - setuptools
     - pip
-# This package imports itself at build time these are not needed. Open an issue upstream to avoid this.
+    # This package imports itself at build time these are not needed. Open an issue upstream to avoid this.
     - h5py >=2.10.0
     - wheel >=0.33.1
     - numpy >=1.22.0
@@ -42,7 +42,7 @@ requirements:
     - boto3 >=1.28.61
 
   run:
-#### requirements.txt
+    #### requirements.txt
     - python >={{ python_min }}
     - h5py >=2.10.0
     - wheel >=0.33.1
