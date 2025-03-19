@@ -1,5 +1,5 @@
 {% set name = "DataProfiler" %}
-{% set version = "0.13.2" %}
+{% set version = "0.13.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/DataProfiler-{{ version }}.tar.gz
-  sha256: 86567eb60c07a59087025f806ddaf8230f92df89bfd26a79ad7486599620e168
+  sha256: 692e5eaaa9491f0ba54aa3dda3700929e0b631e61abeac8b06c51ea2296d1797
 
 build:
   noarch: python
