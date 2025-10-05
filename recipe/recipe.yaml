@@ -1,25 +1,28 @@
-{% set name = "DataProfiler" %}
-{% set version = "0.13.4" %}
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  name: DataProfiler
+  version: "0.13.4"
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/DataProfiler-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/DataProfiler-${{ version }}.tar.gz
   sha256: 469e3acb234b43300f498b84d678949cee1a02f88e98fadfaad725f63447f086
 
 build:
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python ${{ python_min }}.*
     - setuptools
     - pip
-    # This package imports itself at build time these are not needed. Open an issue upstream to avoid this.
     - h5py >=2.10.0
     - wheel >=0.33.1
     - numpy >=1.22.0
@@ -40,12 +43,11 @@ requirements:
     - datasketches >=4.1.0
     - packaging >=23.0
     - boto3 >=1.28.61
-
   run:
     #### requirements.txt
     - typing_extensions >=3.10.0.2
     - versioneer
-    - python >={{ python_min }}
+    - python >=${{ python_min }},<4.0
     - h5py >=2.10.0
     - wheel >=0.33.1
     - numpy <2.0.0
@@ -59,7 +61,7 @@ requirements:
     - charset-normalizer >=1.3.6
     - psutil >=4.0.0
     - scipy >=1.10.0
-    - requests ==2.32.*
+    - requests >=2.32
     - networkx >=2.5.1
     - typing-extensions >=3.10.0.2
     - hll >=2.0.3
@@ -67,21 +69,19 @@ requirements:
     - packaging >=23.0
     - boto3 >=1.28.61
 
-test:
-  imports:
-    - dataprofiler
-    - resources
-  commands:
-    - pip check
-  requires:
-    - pip
-    - python {{ python_min }}
+tests:
+  - python:
+      imports:
+        - dataprofiler
+        - resources
+      python_version: ${{ python_min }}.*
+      pip_check: true
 
 about:
-  home: https://github.com/capitalone/data-profiler
   summary: What is in your data? Detect schema, statistics and entities in almost any file.
   license: Apache-2.0
   license_file: LICENSE
+  homepage: https://github.com/capitalone/data-profiler
 
 extra:
   recipe-maintainers:
