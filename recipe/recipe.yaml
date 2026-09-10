@@ -3,18 +3,18 @@ schema_version: 1
 
 context:
   name: DataProfiler
-  version: "0.13.4"
+  version: 0.14.0
 
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/DataProfiler-${{ version }}.tar.gz
-  sha256: 469e3acb234b43300f498b84d678949cee1a02f88e98fadfaad725f63447f086
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | lower }}-${{ version }}.tar.gz
+  sha256: 837c37909ee16433ad31928168390f24ad4a09c3390d8a679802b06833a606e2
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
 
@@ -50,25 +50,24 @@ requirements:
     - python >=${{ python_min }},<4.0
     - h5py >=2.10.0
     - wheel >=0.33.1
-    - numpy <2.0.0
-    - pandas >=1.1.2
+    - numpy >=1.22.0,<3.0.0
+    - pandas >=1.1.2,<3.0.0
     - python-dateutil >=2.7.5
     - pytz >=2020.1
-    - pyarrow >=1.0.1
-    - chardet >=3.0.4
+    - pyarrow >=1.0.1,<24.0.0
+    - chardet >=3.0.4,<7.0.0
     - fastavro >=1.1.0
     - python-snappy >=0.7.1
     - charset-normalizer >=1.3.6
     - psutil >=4.0.0
     - scipy >=1.10.0
-    - requests >=2.32
+    - requests >=2.32.4
     - networkx >=2.5.1
-    - typing-extensions >=3.10.0.2
     - hll >=2.0.3
     - datasketches >=4.1.0
     - packaging >=23.0
-    - boto3 >=1.28.61
-
+    - boto3 >=1.37.15
+    - urllib3 >=2.5.0
 tests:
   - python:
       imports:
